@@ -16,8 +16,8 @@ public class Demo {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
 			Statement st = con.createStatement();
-			st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME ,GENDER ,JOINING_DATE )VALUES('11','RAJ','M','2018-12-21')");
-			st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME ,GENDER ,JOINING_DATE )VALUES('12','RANI','F','2018-12-22')");
+			st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME ,GENDER ,JOINING_DATE )VALUES('13','RAJ','M','2016-12-21')");
+			st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME ,GENDER ,JOINING_DATE )VALUES('14','RANI','F','2016-12-22')");
 			ResultSet rs = st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
 			while (rs.next()) {
 				String id =rs.getString(1);
@@ -25,9 +25,13 @@ public class Demo {
 				String gender = rs.getString(3);
 				Date date = rs.getDate(4);
 				SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-				 String stringDate = formatter.format(date);
-				System.out.println(id +"/t" + name +"/t" +gender +stringDate);
-				
+				String stringDate = formatter.format(date);
+				System.out.println(id);
+				System.out.println(name);
+				System.out.println(gender);
+				System.out.println(stringDate);
+
+				System.out.println();
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Caught Exception :" + e);
