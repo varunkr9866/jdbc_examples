@@ -10,32 +10,38 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 
 public class Demo {
-
 	public static void main(String[] args) {
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
-			Statement st = con.createStatement();
-			st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME ,GENDER ,JOINING_DATE )VALUES('13','RAJ','M','2016-12-21')");
-			st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME ,GENDER ,JOINING_DATE )VALUES('14','RANI','F','2016-12-22')");
-			ResultSet rs = st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
+			st = con.createStatement();
+			st.execute("INSERT INTO TOPPER_TUTORIALS VALUES('013','RAJ','M','2016-12-21')");
+			st.execute("INSERT INTO TOPPER_TUTORIALS VALUES('014','RANI','F','2016-12-22')");
+			rs = st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
 			while (rs.next()) {
-				String id =rs.getString(1);
+				int id = rs.getInt(1);
 				String name = rs.getString(2);
 				String gender = rs.getString(3);
 				Date date = rs.getDate(4);
-				SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-				String stringDate = formatter.format(date);
-				System.out.println(id);
-				System.out.println(name);
-				System.out.println(gender);
-				System.out.println(stringDate);
-
-				System.out.println();
+				System.out.println("Id Of The Student Is:"+ id);
+				System.out.println("Name Of The Student Is:"+ name);
+				System.out.println("Gender Of The Student Is:"+ gender);
+				System.out.println("Date Of Joining Is:"+ date + "\n");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println("Caught Exception :" + e);
+			System.out.println("Exception Caught: "+e);
+		}
+		finally {
+			try {
+				con.close();
+				st.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-
 }

@@ -8,14 +8,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Jdbc_Demo {
-
 	public static void main(String[] args) {
-		
+		Connection con =null;
+		Statement st = null;
+		ResultSet rs = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
+			st = con.createStatement();
+			rs = st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
 			while (rs.next()) {
 				int id = rs.getInt(1);
 				String name = rs.getString(2);
@@ -27,9 +28,16 @@ public class Jdbc_Demo {
 				System.out.println("Date Of Joining Is:"+ date + "\n");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println("Exception Caught: "+e);
+			System.out.println("Exception Caught: "+ e);
 		}
-		
+		finally {
+			try {
+				con.close();
+				st.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
-
 }
