@@ -18,8 +18,8 @@ public class Demo {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
 			st = con.createStatement();
-			st.execute("INSERT INTO TOPPER_TUTORIALS VALUES('013','RAJ','M','2016-12-21')");
-			st.execute("INSERT INTO TOPPER_TUTORIALS VALUES('014','RANI','F','2016-12-22')");
+			st.execute("INSERT INTO TOPPER_TUTORIALS VALUES('011','RAJ','M','2016-12-21')");
+			st.execute("INSERT INTO TOPPER_TUTORIALS VALUES('012','RANI','F','2016-12-22')");
 			rs = st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
 			while (rs.next()) {
 				int id = rs.getInt(1);
