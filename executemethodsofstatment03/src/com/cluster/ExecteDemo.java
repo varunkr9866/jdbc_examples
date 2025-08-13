@@ -18,10 +18,14 @@ public class ExecteDemo {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql", "root", "Cluster");
 			 st = con.createStatement();
-			 st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME,GENDER,JOINING_DATE)VALUES('013','PRAHARSHA','F','2016-12-31');");
-			 st.execute("UPDATE TOPPER_TUTORIALS SET STUDENT_NAME = 'KRITIKA' WHERE STUDENT_ID = '002';");
-			 st.execute("DELETE FROM TOPPER_TUTORIALS WHERE STUDENT_ID ='003';");
-			 st.execute("SELECT * FROM TOPPER_TUTORIALS;");
+			 boolean a = st.execute("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME,GENDER,JOINING_DATE)VALUES('014','BHARGAVI','F','2016-12-31');");
+			 boolean b = st.execute("UPDATE TOPPER_TUTORIALS SET STUDENT_NAME = 'RAMU' WHERE STUDENT_ID = '002';");
+			 boolean c = st.execute("DELETE FROM TOPPER_TUTORIALS WHERE STUDENT_ID ='003';");
+			 boolean d = st.execute("SELECT * FROM TOPPER_TUTORIALS;");
+			 System.out.println("Value Of a Is:" +a );
+			 System.out.println("Value Of b Is:"+ b );
+			 System.out.println("Value Of c Is:"+ c );
+			 System.out.println("Value Of d Is:"+ d );
 			 rs = st.getResultSet();
 			 while (rs.next()) {
 				String id =rs.getString("STUDENT_ID");
