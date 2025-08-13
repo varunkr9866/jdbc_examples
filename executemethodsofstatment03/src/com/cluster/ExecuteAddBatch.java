@@ -31,10 +31,10 @@ public class ExecuteAddBatch {
 			 st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
 			 rs = st.getResultSet();
 			 while (rs.next()) {
-				String id =rs.getString("STUDENT_ID");
-				String name =rs.getString("STUDENT_NAME");
-				String gender =rs.getString("GENDER");
-				Date date =rs.getDate("JOINING_DATE");
+				String id =(rs.getString("STUDENT_ID")+ "\t");
+				String name =(rs.getString("STUDENT_NAME")+ "\t");
+				String gender =(rs.getString("GENDER")+ "\t");
+				Date date =(rs.getDate("JOINING_DATE"));
 				System.out.println(id);
 				System.out.println(name);
 				System.out.println(gender);
