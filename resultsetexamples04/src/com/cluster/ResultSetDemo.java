@@ -22,19 +22,56 @@ public class ResultSetDemo {
 				
 				//selecting all rows
 				rs =st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
-				System.out.println("DISPLAYING RESULTSET");
+				System.out.println("DISPLAYING RESULTSET ALL COLUMNS");
 				while (rs.next()) {
-					String id = rs.getString(1);
-					String name = rs.getString(2) ;
-					String gender = rs.getString(3) ;
+					String id = (rs.getString(1)+"\t");
+					String name = (rs.getString(2) + "\t");
+					String gender = (rs.getString(3) +"\t");
 					Date date = rs.getDate(4);
-					
-					System.out.println(id);
-					System.out.println(name);
-					System.out.println(gender);
-					System.out.println(date);
+					System.out.println();
+					System.out.print(id);
+					System.out.print(name);
+					System.out.print(gender);
+					System.out.print(date);
+					System.out.println();
 				}
 				
+				//selecting THREE rows
+				rs =st.executeQuery("SELECT STUDENT_ID,STUDENT_NAME,GENDER FROM TOPPER_TUTORIALS;");
+				System.out.println("DISPLAYING RESULTSET THREE COLUMNS");
+				while (rs.next()) {
+					String id = (rs.getString(1)+"\t");
+					String name = (rs.getString(2) + "\t");
+					String gender = (rs.getString(3) +"\t");
+					System.out.println();
+					System.out.print(id);
+					System.out.print(name);
+					System.out.print(gender);
+					System.out.println();
+					
+				}
+				
+				//selecting TWO rows
+				rs =st.executeQuery("SELECT STUDENT_ID,STUDENT_NAME FROM TOPPER_TUTORIALS;");
+				System.out.println("DISPLAYING RESULTSET TWO COLUMNS");
+				while (rs.next()) {
+					String id = (rs.getString(1)+"\t");
+					String name = (rs.getString(2) + "\t");
+					System.out.println();
+					System.out.print(id);
+					System.out.print(name);
+					System.out.println();
+				}
+				
+				//selecting ONE rows
+				rs =st.executeQuery("SELECT STUDENT_ID FROM TOPPER_TUTORIALS;");
+				System.out.println("DISPLAYING RESULTSET ONE COLUMNS");
+				while (rs.next()) {
+					String id = (rs.getString(1)+"\t");
+					System.out.println();
+					System.out.print(id);
+					System.out.println();
+				}
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
