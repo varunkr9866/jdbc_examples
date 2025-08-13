@@ -30,42 +30,13 @@ public class UpdatableResultSetDemo {
 				System.out.println((rs.getString("GENDER") +"\t"));
 				System.out.println(rs.getDate("JOINING_DATE"));
 				
-				//Cursor moves to exact 10th row
 				rs.absolute(5);
-				System.out.println("DISPLAYING RESULTSET in 5th row");
 				rs.updateString(2, "DHARANI");
-				System.out.println(rs.getString(2));
-				rs.updateDate(4, rs.getDate("JOINING_DATE"));
+				System.out.println((rs.getString("STUDENT_NAME")));
 				rs.updateRow();
-				System.out.println();
-				
-				//delete row previous of present cursor
-				rs.previous();
-				rs.deleteRow();
 				
 				
-				//3rd previous of present cursor
-				rs.relative(-3);
 				
-				System.out.println();
-				
-				//cursor moves to first row
-				rs.first();
-				System.out.println((rs.getString("STUDENT_ID") +"\t"));
-				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
-				System.out.println((rs.getString("GENDER") +"\t"));
-				System.out.println(rs.getDate("JOINING_DATE"));
-				
-				System.out.println();
-				
-				//cursor moves to last row
-				rs.last();
-				System.out.println((rs.getString("STUDENT_ID") +"\t"));
-				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
-				System.out.println((rs.getString("GENDER") +"\t"));
-				System.out.println(rs.getDate("JOINING_DATE"));
-				
-				System.out.println();
 		
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
