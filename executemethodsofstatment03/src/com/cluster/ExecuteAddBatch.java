@@ -18,10 +18,10 @@ public class ExecuteAddBatch {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql", "root", "Cluster");
 			 st = con.createStatement();
-			 st.addBatch("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME,GENDER,JOINING_DATE)VALUES('014','BHARGAVI','F','2016-12-31');");
-			 st.addBatch("UPDATE TOPPER_TUTORIALS SET STUDENT_NAME = 'RAMU' WHERE STUDENT_ID = '002';");
-			 st.addBatch("DELETE FROM TOPPER_TUTORIALS WHERE STUDENT_ID ='003';");
-			 st.addBatch("SELECT * FROM TOPPER_TUTORIALS;");
+			 st.addBatch("INSERT INTO TOPPER_TUTORIALS (STUDENT_ID,STUDENT_NAME,GENDER,JOINING_DATE)VALUES('015','TEJA','M','2016-12-31');");
+			 st.addBatch("UPDATE TOPPER_TUTORIALS SET STUDENT_NAME = 'RANA' WHERE STUDENT_ID = '009';");
+			 st.addBatch("DELETE FROM TOPPER_TUTORIALS WHERE STUDENT_ID ='001';");
+			 st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
 			 rs = st.getResultSet();
 			 while (rs.next()) {
 				String id =rs.getString("STUDENT_ID");
@@ -33,7 +33,8 @@ public class ExecuteAddBatch {
 				System.out.println(gender);
 				System.out.println(date);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		}
+		catch (ClassNotFoundException | SQLException e) {
 			
 			e.printStackTrace();
 		}
@@ -42,21 +43,20 @@ public class ExecuteAddBatch {
 					try {
 						con.close();
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 					if (st != null) {
 						try {
 							st.close();
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
+							
 							e.printStackTrace();
 						}
 						if (rs != null) {
 							try {
 								rs.close();
 							} catch (SQLException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
@@ -64,6 +64,6 @@ public class ExecuteAddBatch {
 	
 				}
 	
-			}
+		}
 	}			
 }
