@@ -24,52 +24,58 @@ public class ResultSetScrolableDemo {
 			
 			rs =st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
 			System.out.println("DISPLAYING RESULTSET ALL COLUMNS");
-			while (rs.next()) {
-				String id = (rs.getString("STUDENT_ID") +"\t");
-				String name = (rs.getString("STUDENT_NAME") + "\t");
-				String gender = (rs.getString("GENDER") +"\t");
-				Date date = rs.getDate("JOINING_DATE");
+			rs.next();
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
 				
 				//Cursor moves to exact 10th row
 				rs.absolute(10);
-				System.out.print(id);
-				System.out.print(name);
-				System.out.print(gender);
-				System.out.print(date);
+				System.out.println("DISPLAYING RESULTSET in 10th row");
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
 				System.out.println();
 				
 				//previous of present cursor
 				rs.previous();
-				System.out.print(id);
-				System.out.print(name);
-				System.out.print(gender);
-				System.out.print(date);
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
 				System.out.println();
 				
 				//3rd previous of present cursor
 				rs.relative(-3);
-				System.out.print(id);
-				System.out.print(name);
-				System.out.print(gender);
-				System.out.print(date);
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
 				System.out.println();
 				
 				//cursor moves to first row
 				rs.first();
-				System.out.print(id);
-				System.out.print(name);
-				System.out.print(gender);
-				System.out.print(date);
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
 				System.out.println();
 				
 				//cursor moves to last row
 				rs.last();
-				System.out.print(id);
-				System.out.print(name);
-				System.out.print(gender);
-				System.out.print(date);
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
 				System.out.println();
-			}
+		
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
