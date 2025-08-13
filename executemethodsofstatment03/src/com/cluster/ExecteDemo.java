@@ -3,8 +3,18 @@ package com.cluster;
 public class ExecteDemo {
 
 	public static void main(String[] args) {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		finally{
+			if (condition) {
+				
+			}
+		}
 
 	}
 
