@@ -10,55 +10,93 @@ import java.sql.Statement;
 public class UpdatableResultSetDemo {
 
 	public static void main(String[] args) {
-		Connection con = null;
+		Connection con =null;
 		Statement st = null;
-		ResultSet rs =null;
+		ResultSet rs = null;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql", "root", "Cluster");
-			st = con.createStatement();
-			//executing executeUpdate program
-			int a = st.executeUpdate(
-					"INSERT INTO TOPPER_TUTORIALS(STUDENT_ID,STUDENT_NAME,GENDER,JOINING_DATE)VALUES('011','RAJ','M','2016-12-23');");
-			int b = st.executeUpdate("UPDATE TOPPER_TUTORIALS SET STUDENT_NAME = 'OMKAR' WHERE STUDENT_ID = '008';");
-			int c = st.executeUpdate("DELETE FROM TOPPER_TUTORIALS WHERE STUDENT_ID = '005';");
-			System.out.println("Value of a is:"+ a);
-			System.out.println("Value of b is:" + b);
-			System.out.println("Value of c is:" + c);
-			st.executeQuery("SELECT * FROM TOPPER_TUTORIALS");
-			rs = st.getResultSet();
+			Class .forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("Driver Loaded");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
+			System.out.println("Got Data Connection");
 			
-			while (rs.next()) {
-				String id =rs.getString("STUDENT_ID");
-				String name =rs.getString("STUDENT_NAME");
-				String gender =rs.getString("GENDER");
-				Date date = rs.getDate("JOINING_DATE");
+			st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			//selecting all rows
+			
+			rs =st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
+			System.out.println("DISPLAYING RESULTSET ALL COLUMNS");
+			rs.next();
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
 				
-				System.out.println(id);
-				System.out.println(name);
-				System.out.println(gender);
-				System.out.println(date);
-			}
+				//Cursor moves to exact 10th row
+				rs.absolute(5);
+				System.out.println("DISPLAYING RESULTSET in 5th row");
+				rs.updateString(2, "DHARANI");
+				System.out.println(rs.getString(2));
+				rs.updateDate(4, rs.getDate("JOINING_DATE"));
+				rs.updateRow();
+				System.out.println();
+				
+				//delete row previous of present cursor
+				rs.previous();
+				rs.deleteRow();
+				
+				
+				//3rd previous of present cursor
+				rs.relative(-3);
+				
+				System.out.println();
+				
+				//cursor moves to first row
+				rs.first();
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
+				System.out.println();
+				
+				//cursor moves to last row
+				rs.last();
+				System.out.println((rs.getString("STUDENT_ID") +"\t"));
+				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
+				System.out.println((rs.getString("GENDER") +"\t"));
+				System.out.println(rs.getDate("JOINING_DATE"));
+				
+				System.out.println();
+		
 		} catch (ClassNotFoundException | SQLException e) {
-			System.out.println("Exception Caught :" + e);
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {
-			try {
-				if (con != null) {
+			if (con != null) {
+				try {
 					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				if (st != null) {
-					st.close();
+					try {
+						st.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					if (rs != null) {
+						try {
+							rs.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
-				if (rs != null) {
-					rs.close();
-				}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 
+			}
+		}	
+	}
 }
