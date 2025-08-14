@@ -44,6 +44,7 @@ public class UpdatableResultSetDemo {
 				rs.moveToInsertRow();
 				rs.updateString(1, "015");
 				rs.updateString("STUDENT_NAME", "DHAMU");
+				rs.updateString("GENDER", "M");
 				rs.insertRow();
 				rs.previous();
 				rs.first();
