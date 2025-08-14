@@ -15,7 +15,7 @@ public class ResultSetDemo {
 			ResultSet rs = null;
 			try {
 				Class .forName("com.mysql.cj.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql","root","Cluster");
+				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql", "root", "Cluster");
 				System.out.println("Got Data Connection");
 				st = con.createStatement();
 				st.getResultSet();

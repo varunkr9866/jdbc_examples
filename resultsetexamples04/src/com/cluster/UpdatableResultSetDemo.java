@@ -21,7 +21,6 @@ public class UpdatableResultSetDemo {
 			
 			st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			//selecting all rows
-			
 			rs =st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
 			System.out.println("DISPLAYING RESULTSET ALL COLUMNS");
 			while (rs.next()) {
