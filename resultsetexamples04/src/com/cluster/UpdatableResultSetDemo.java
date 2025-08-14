@@ -24,20 +24,25 @@ public class UpdatableResultSetDemo {
 			
 			rs =st.executeQuery("SELECT * FROM TOPPER_TUTORIALS;");
 			System.out.println("DISPLAYING RESULTSET ALL COLUMNS");
-			rs.next();
+			while (rs.next()) {
 				System.out.println((rs.getString("STUDENT_ID") +"\t"));
 				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
 				System.out.println((rs.getString("GENDER") +"\t"));
 				System.out.println(rs.getDate("JOINING_DATE"));
+			} rs.next();
+				
 				
 				rs.absolute(5);
-				rs.updateString(2, "DHARANI");
+				rs.updateString(2,"DHARANI");
 				System.out.println((rs.getString("STUDENT_NAME")));
 				rs.updateRow();
 				
+				rs.last();
+				System.out.println("");
+				rs.previous();
+				rs.first();
 				
 				
-		
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
