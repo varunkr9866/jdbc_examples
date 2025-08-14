@@ -29,16 +29,22 @@ public class UpdatableResultSetDemo {
 				System.out.println((rs.getString("STUDENT_NAME") + "\t"));
 				System.out.println((rs.getString("GENDER") +"\t"));
 				System.out.println(rs.getDate("JOINING_DATE"));
-			} rs.next();
+			} 
 				
 				
 				rs.absolute(5);
 				rs.updateString(2,"DHARANI");
-				System.out.println((rs.getString("STUDENT_NAME")));
 				rs.updateRow();
 				
-				rs.last();
-				System.out.println("");
+				
+				rs.absolute(2);
+				rs.deleteRow();
+				
+				
+				rs.moveToInsertRow();
+				rs.updateString(1, "015");
+				rs.updateString("STUDENT_NAME", "DHAMU");
+				rs.insertRow();
 				rs.previous();
 				rs.first();
 				
