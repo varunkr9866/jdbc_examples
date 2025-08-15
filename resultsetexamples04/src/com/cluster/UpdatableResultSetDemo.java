@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UpdatableResultSetDemo {
-
+			
 	public static void main(String[] args) {
 		Connection con =null;
 		Statement st = null;
@@ -41,7 +41,7 @@ public class UpdatableResultSetDemo {
 				
 				
 				rs.moveToInsertRow();
-				rs.updateString(1, "015");
+				rs.updateString(1, "016");
 				rs.updateString("STUDENT_NAME", "DHAMU");
 				rs.updateString("GENDER", "M");
 				rs.insertRow();
