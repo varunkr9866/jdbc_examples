@@ -1,7 +1,6 @@
 package com.cluster;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -13,8 +12,11 @@ public class ResultSetMetaDataDemo {
 		Connection con =null;
 		Statement st = null;
 		ResultSet rs = null;
-		try {
-			Class .forName("com.mysql.cj.jdbc.Driver");
+		
+			try {
+			
+				Class .forName("com.mysql.cj.jdbc.Driver");
+
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/varunmysql", "root", "Cluster");
 			System.out.println("Got Data Connection");
 			st = con.createStatement();
@@ -27,42 +29,14 @@ public class ResultSetMetaDataDemo {
 				
 			System.out.println("DISPLAYING RESULTSET ALL COLUMNS");
 				System.out.println();
-				System.out.print(id);
-				System.out.print(name);
-				System.out.print(gender);
-				System.out.print(date);
+				System.out.println("" + rsmd.getColumnCount());
+				System.out.println("" + rsmd.getColumnLabel(2));
+				System.out.println("" + rsmd.getColumnType(1));
+				System.out.println("" + rsmd.getColumnTypeName(3));
 				System.out.println();
-			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally {
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				if (st != null) {
-					try {
-						st.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					if (rs != null) {
-						try {
-							rs.close();
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		}	
-	}
+		}
 }
