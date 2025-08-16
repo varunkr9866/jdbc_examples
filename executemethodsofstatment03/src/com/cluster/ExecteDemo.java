@@ -22,10 +22,10 @@ public class ExecteDemo {
 			 boolean b = st.execute("UPDATE TOPPER_TUTORIALS SET STUDENT_NAME = 'RAMU' WHERE STUDENT_ID = '002';");
 			 boolean c = st.execute("DELETE FROM TOPPER_TUTORIALS WHERE STUDENT_ID ='003';");
 			 boolean d = st.execute("SELECT * FROM TOPPER_TUTORIALS;");
-			 System.out.println("Value Of a Is:" +a );
-			 System.out.println("Value Of b Is:"+ b );
-			 System.out.println("Value Of c Is:"+ c );
-			 System.out.println("Value Of d Is:"+ d );
+			 System.out.println("Value Of a Is:" + a );
+			 System.out.println("Value Of b Is:" + b );
+			 System.out.println("Value Of c Is:" + c );
+			 System.out.println("Value Of d Is:" + d );
 			 rs = st.getResultSet();
 			 while (rs.next()) {
 				String id =rs.getString("STUDENT_ID");
