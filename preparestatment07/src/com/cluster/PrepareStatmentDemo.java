@@ -54,9 +54,6 @@ public class PrepareStatmentDemo {
 				prst2.executeUpdate();
 				
 				
-				
-				
-				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
