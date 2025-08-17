@@ -1,7 +1,11 @@
 package com.cluster;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,9 +20,9 @@ public class DatabaseToFile {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;
-		Scanner sc = null;
+		PrintWriter pw = null;
 		try {
-			sc = new Scanner(new File("hello.txt"));
+			pw = new PrintWriter(new File("cluster.txt"));
 			con = DButil.getConnection();
 			st =con.createStatement();
 			rs = st.executeQuery("SELECT * FROM EMP;");
