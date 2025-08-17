@@ -1,8 +1,12 @@
 package com.cluster;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 import com.cluster.util.DButil;
 
@@ -11,14 +15,20 @@ public class DatabaseToFile {
 	public static void main(String[] args) {
 		Connection con = null;
 		Statement st = null;
-		
-		
+		ResultSet rs = null;
+		Scanner sc = null;
 		try {
+			sc = new Scanner(new File("hello.txt"));
 			con = DButil.getConnection();
 			st =con.createStatement();
-			st.execute("SELECT * FROM EMP;");
-			while
-		} catch (ClassNotFoundException | SQLException e) {
+			rs = st.executeQuery("SELECT * FROM EMP;");
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				int sal = rs.getInt(3);
+				
+			}
+		} catch (ClassNotFoundException | SQLException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
