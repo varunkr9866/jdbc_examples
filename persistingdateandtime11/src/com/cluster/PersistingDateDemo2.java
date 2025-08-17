@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 import com.cluster.util.DButil;
 
-public class PersistingDateAndTimeDemo2 {
+public class PersistingDateDemo2 {
 		public static void main(String[] args) {
 			Connection con = null;
 			PreparedStatement pst = null;
