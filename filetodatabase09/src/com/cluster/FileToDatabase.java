@@ -28,8 +28,10 @@ public class FileToDatabase {
 				int id = sc.nextInt();
 				String name = sc.next();
 				int sal = sc.nextInt();
+				st.addBatch("INSERT INTO EMP VALUES('"+id+"','"+name+"','"+sal+"')");
 				
 			}
+			st.executeBatch();
 		} catch (FileNotFoundException | ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
