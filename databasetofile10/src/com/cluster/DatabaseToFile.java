@@ -25,13 +25,14 @@ public class DatabaseToFile {
 			pw = new PrintWriter(new File("cluster.txt"));
 			con = DButil.getConnection();
 			st =con.createStatement();
-			rs = st.executeQuery("SELECT * FROM EMP;");
+			rs = st.executeQuery("SELECT * FROM EMP");
 			while (rs.next()) {
-				int id = rs.getInt(1);
-				String name = rs.getString(2);
-				int sal = rs.getInt(3);
-				
+				pw.write(rs.getInt(1)+"\t");
+				pw.write(rs.getString(2)+"\t");
+				pw.write(rs.getInt(3)+"\n");
+				pw.flush();
 			}
+			System.out.println("Finished Writing To File");
 		} catch (ClassNotFoundException | SQLException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
