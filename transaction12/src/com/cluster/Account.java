@@ -21,7 +21,7 @@ public class Account {
 				//start Transaction
 				con.setAutoCommit(false);
 				//operation1 select
-				pst1 =con.prepareStatement("SELECT BAL FROM ACCOUNT WHERE ACCNO =?");
+				pst1 =con.prepareStatement("SELECT BAL FROM ACCOUNT WHERE ACC =?");
 				pst1.setInt(1, sacc);
 				rs1 =pst1.executeQuery();
 				if (rs1.next()) {
@@ -34,7 +34,7 @@ public class Account {
 				} else {
 					throw new Exception();
 				}
-				pst2 = con.prepareStatement("UPDATE ACCOUNT SET BAL = ? WHERE ACCNO = ?");
+				pst2 = con.prepareStatement("UPDATE ACCOUNT SET BAL = ? WHERE ACC = ?");
 				pst2.setInt(1, sanbal1);
 				pst2.setInt(2, sacc);
 				pst2.executeUpdate();
@@ -57,7 +57,7 @@ public class Account {
 				con.commit();
 				System.out.println("Transaction Completed");
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+				con.rollback();
 				e.printStackTrace();
 			}
 			
