@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.cluster.util.DButil;
 
-public class JdbcCollectionsDemo {
+public class JdbcCollectionsNamesDemo {
 		public static void main(String[] args) {
 			Connection con = null;
 			Statement st = null;
