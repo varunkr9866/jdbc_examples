@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import com.cluster.to.Employee;
 import com.cluster.util.DButil;
@@ -19,20 +22,26 @@ public class TableJdbcCollectionsDemo {
 			st = con.createStatement();
 			String mysqlQuery = "SELECT * FROM EMPLOYEE;";
 			rs = st.executeQuery(mysqlQuery);
-			Employee emp = null;
-			if(rs.next()) 
+			List<Employee> listEmp = new ArrayList<Employee>();
+			
+			while(rs.next()) 
 			{
-				emp = new Employee();
+				Employee emp = new Employee();
 				emp.setEmployeeid(rs.getInt("EMP_ID"));
 				emp.setName(rs.getString("EMP_NAME"));
 				emp.setEmail(rs.getString("EMAIL"));
 				emp.setPhone(rs.getInt("PHONE"));
+				listEmp.add(emp);
 			}
-			System.out.println("Employee ID is:" + emp.getEmployeeid());
-			System.out.println("Employee NAME is:" + emp.getName());
-			System.out.println("Employee EMAIL is:" + emp.getEmail());
-			System.out.println("Employee PHONE is:" + emp.getPhone());
-			
+			for (Employee emp : listEmp) 
+			{
+				System.out.println("Employee ID is:" + emp.getEmployeeid());
+				System.out.println("Employee NAME is:" + emp.getName());
+				System.out.println("Employee EMAIL is:" + emp.getEmail());
+				System.out.println("Employee PHONE is:" + emp.getPhone());
+				System.out.println();
+				
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Exception Caught" + e);
 			e.printStackTrace();
