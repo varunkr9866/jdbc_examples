@@ -24,14 +24,18 @@ public class Account {
 				pst1 =con.prepareStatement("SELECT BAL FROM ACCOUNT WHERE ACC =?");
 				pst1.setInt(1, sacc);
 				rs1 =pst1.executeQuery();
-				if (rs1.next()) {
+				if (rs1.next()) 
+				{
 					saba1 = rs1.getInt(amt);
-				} else {
+				} else 
+				{
 					throw new Exception();
 				}
-				if (saba1 >= amt) {
+				if (saba1 >= amt) 
+				{
 					sanbal1 = saba1-amt;
-				} else {
+				} else 
+				{
 					throw new Exception();
 				}
 				pst2 = con.prepareStatement("UPDATE ACCOUNT SET BAL = ? WHERE ACC = ?");
@@ -43,9 +47,11 @@ public class Account {
 				//op3 select
 				pst1.setInt(1, dacc);
 				rs2 = pst1.executeQuery();
-				if (rs2.next()) {
+				if (rs2.next()) 
+				{
 					daba1 = rs2.getInt(3);
-				} else {
+				} else 
+				{
 					throw new Exception();
 				}
 				danbal1 = daba1+amt;
