@@ -8,7 +8,7 @@ import java.sql.Statement;
 import com.cluster.to.Employee;
 import com.cluster.util.DButil;
 
-public class JDBCcollectionsTableDemo {
+public class TableJdbcCollectionsDemo {
 	public static void main(String[] args) {
 		Connection con = null;
 		Statement st = null;
@@ -17,7 +17,7 @@ public class JDBCcollectionsTableDemo {
 			con = DButil.getConnection();
 			System.out.println("Got The Connection");
 			st = con.createStatement();
-			String mysqlQuery = "SELECT * FROM EMPLOYEE WHERE EMP_ID ='102';";
+			String mysqlQuery = "SELECT * FROM EMPLOYEE;";
 			rs = st.executeQuery(mysqlQuery);
 			Employee emp = null;
 			if(rs.next()) 
